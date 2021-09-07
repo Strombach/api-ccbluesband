@@ -4,7 +4,8 @@
   "description": "### Endpoints * Login * Content * Files * Posts",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "devstart": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Strombach/api-strombackwebdev/issues"
   },
-  "homepage": "https://github.com/Strombach/api-strombackwebdev#readme"
+  "homepage": "https://github.com/Strombach/api-strombackwebdev#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
 }
