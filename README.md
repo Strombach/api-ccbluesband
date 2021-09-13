@@ -3,5 +3,5 @@
 ### Endpoints
 * Login
 * Content
-* Files
+* Events
 * Posts

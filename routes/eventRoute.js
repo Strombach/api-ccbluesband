@@ -11,4 +11,8 @@ router.get('/:eventId', controller.getSingleEvent)
 
 router.post('/', controller.addNewEvent)
 
+router.put('/:eventId', controller.editEvent)
+
+router.delete('/:eventId', controller.deleteEvent)
+
 module.exports = router

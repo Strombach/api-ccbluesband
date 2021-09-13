@@ -14,4 +14,12 @@ eventController.addNewEvent = (req, res, next) => {
   res.send('New Event added!')
 }
 
+eventController.editEvent = (req, res, next) => {
+  res.send('Edit event')
+}
+
+eventController.deleteEvent = (req, res, next) => {
+  res.send('Delete event')
+}
+
 module.exports = eventController
