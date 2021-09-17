@@ -1,8 +1,21 @@
 "use strict"
 
 const express = require('express')
+const mongoose = require('mongoose')
+
+// Load env variables from .env
+require('dotenv').config()
 
 const app = express()
+
+// Connect to database
+mongoose.connect(process.env.MONGO_DB, { useNewUrlParser: true, useUnifiedTopology: true })
+let db = mongoose.connection
+
+db.on('error', console.error.bind(console, 'connection error: '))
+db.on('open', () => {
+  console.log('Connected to DB')
+})
 
 app.use('/events', require('./routes/eventRoute'))
 app.use('/', require('./routes/indexRoute'))
