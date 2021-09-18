@@ -6,9 +6,12 @@ const mongoose = require('mongoose')
 // Load env variables from .env
 require('dotenv').config()
 
+// Reads port from env. varible named PORT
+const port = process.env.PORT
+
 const app = express()
 
-// Connect to database
+// Connect to database. Reads URL from env varible named MONGO_DB.
 mongoose.connect(process.env.MONGO_DB, { useNewUrlParser: true, useUnifiedTopology: true })
 let db = mongoose.connection
 
@@ -30,6 +33,6 @@ app.use((req, res, next) => {
   })
 })
 
-app.listen(5000, () => {
-  console.log('Server listening on port 5000')
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`)
 })
