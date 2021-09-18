@@ -5,6 +5,7 @@
 */
 
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -27,6 +28,23 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 8
   }
+})
+
+// Number of salt rounds for hashing password.
+const saltRounds = 12
+
+/**
+ * The prehook that hashes the password before
+ * saving it to the database if modified or new.
+*/
+
+userSchema.pre('save', async function (next) {
+
+  if (this.isModified('password') || this.isNew) {
+    const hashPassword = await bcrypt.hash(this.password, saltRounds)
+    this.password = hashPassword
+  }
+  next()
 })
 
 const User = mongoose.model('User', userSchema)

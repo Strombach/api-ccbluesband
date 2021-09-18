@@ -1,6 +1,6 @@
 'use strict'
 
-const User = require('../models/userSchema')
+const User = require('../schemas/userSchema')
 
 const userController = {}
 
