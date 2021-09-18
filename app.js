@@ -17,6 +17,7 @@ db.on('open', () => {
   console.log('Connected to DB')
 })
 
+// Routes for the application
 app.use('/events', require('./routes/eventRoute'))
 app.use('/', require('./routes/indexRoute'))
 

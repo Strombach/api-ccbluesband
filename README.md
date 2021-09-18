@@ -1,7 +1,8 @@
-# StrombackWebdev API
+# CC-Bluesband API
 
 ### Endpoints
 * Login
-* Content
+* Content (About)
 * Events
-* Posts
+* Videos
+* Contact

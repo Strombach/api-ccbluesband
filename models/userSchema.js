@@ -1,5 +1,9 @@
 'use strict'
 
+/** @description The schema for all data about a user.
+ * Even a prehook for hashing the password when a new user is saved to the database.
+*/
+
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
