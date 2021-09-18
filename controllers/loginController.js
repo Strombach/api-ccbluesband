@@ -1,4 +1,5 @@
 'use strict'
+
 const User = require('../models/userSchema')
 
 const loginController = {}
