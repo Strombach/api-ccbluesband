@@ -21,7 +21,7 @@ db.on('open', () => {
 })
 
 // Routes for the application
-app.use('/login', require('./routes/loginRoute'))
+app.use('/user', require('./routes/userRoute'))
 app.use('/events', require('./routes/eventRoute'))
 app.use('/', require('./routes/indexRoute'))
 
