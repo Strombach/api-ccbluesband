@@ -14,4 +14,8 @@ userController.userLogin = (req, res, next) => {
   res.send('Logged in!')
 }
 
+userController.userRegister = (req, res, next) => {
+  res.send('User registered')
+}
+
 module.exports = userController
