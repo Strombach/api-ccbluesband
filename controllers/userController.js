@@ -10,8 +10,16 @@ const userController = {}
  * @param {*} res The response object.
  * @param {*} next The next function.
  */
-userController.userLogin = (req, res, next) => {
-  res.send('Logged in!')
+userController.userLogin = async (req, res, next) => {
+  try {
+    let userLogin = await User.findOne({ username: req.body.username })
+    res.json(userLogin)
+
+  } catch (error) {
+    res.sendStatus(403).json({
+      error
+    })
+  }
 }
 
 /**
@@ -34,7 +42,7 @@ userController.userRegister = async (req, res, next) => {
 
     res.send(dbResponse)
   } catch (error) {
-    res.status(422).json({
+    res.statusStatus(422).json({
       errorMessage: error.message,
       fullError: error
     })
