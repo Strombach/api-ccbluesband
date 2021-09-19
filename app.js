@@ -20,6 +20,10 @@ db.on('open', () => {
   console.log('Connected to DB')
 })
 
+//Additinal middleware
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
 // Routes for the application
 app.use('/user', require('./routes/userRoute'))
 app.use('/events', require('./routes/eventRoute'))
