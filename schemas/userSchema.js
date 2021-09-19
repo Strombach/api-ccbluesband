@@ -37,7 +37,6 @@ const saltRounds = 12
  * The prehook that hashes the password before
  * saving it to the database if modified or new.
 */
-
 userSchema.pre('save', async function (next) {
 
   if (this.isModified('password') || this.isNew) {
