@@ -13,11 +13,13 @@ const userController = {}
 userController.userLogin = async (req, res, next) => {
   try {
     let userLogin = await User.findOne({ username: req.body.username })
-    res.json(userLogin)
+    if (!userLogin) throw new Error('Wrong username or password!')
 
+    res.json(userLogin)
   } catch (error) {
-    res.sendStatus(403).json({
-      error
+    res.json({
+      type: 'error',
+      message: error.message
     })
   }
 }
@@ -42,7 +44,7 @@ userController.userRegister = async (req, res, next) => {
 
     res.send(dbResponse)
   } catch (error) {
-    res.statusStatus(422).json({
+    res.status(422).json({
       errorMessage: error.message,
       fullError: error
     })
