@@ -1,5 +1,7 @@
 'use strict'
 
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 const User = require('../schemas/userSchema')
 
 const userController = {}
@@ -15,7 +17,23 @@ userController.userLogin = async (req, res, next) => {
     let userLogin = await User.findOne({ username: req.body.username })
     if (!userLogin) throw new Error('Wrong username or password!')
 
-    res.json(userLogin)
+    const passwordResult = await bcrypt.compare(req.body.password, userLogin.password)
+    if (!passwordResult) throw new Error('Wrong username or password!')
+
+    const loginSuccess = {
+      loggedIn: true,
+      username: userLogin.username
+    }
+
+    jwt.sign({ loginSuccess }, '123', { expiresIn: '10M' }, (err, token) => {
+      if (err) console.log(err)
+
+      res.json({
+        message: 'Login Successful!',
+        loggedIn: true,
+        JWT: token
+      })
+    })
   } catch (error) {
     res.json({
       type: 'error',
